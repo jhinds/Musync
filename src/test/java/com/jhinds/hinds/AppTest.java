@@ -3,7 +3,8 @@ package com.jhinds.hinds;
 import org.mockito.InjectMocks;
 
 import com.jhinds.musync.Resource;
-import com.jhinds.musync.Song;
+
+import entities.Song;
 
 import org.junit.Test;
 /**
