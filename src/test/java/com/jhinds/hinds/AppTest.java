@@ -4,7 +4,7 @@ import org.mockito.InjectMocks;
 
 import com.jhinds.musync.Resource;
 
-import entities.Song;
+import com.jhinds.musync.entities.Song;
 
 import org.junit.Test;
 /**

@@ -1,4 +1,4 @@
-package entities;
+package com.jhinds.musync.entities;
 
 import java.util.List;
 
