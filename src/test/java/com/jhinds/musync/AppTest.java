@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AppTest {
 
 	@InjectMocks
-	private Resource resource;
+	private MusyncResource musyncResource;
 
 	@Test
 	public void testGetEntity() {

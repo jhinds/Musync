@@ -1,4 +1,4 @@
-package com.jhinds.musync;
+package com.jhinds.musync.service;
 
 import com.jhinds.musync.service.PandoraService;
 import org.junit.Test;

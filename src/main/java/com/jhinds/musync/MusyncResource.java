@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.jhinds.musync.entities.Playlist;
 import com.jhinds.musync.entities.Song;
 
-public class Resource {
+public class MusyncResource {
 	
 	@Autowired
 	MusyncService musyncService;
