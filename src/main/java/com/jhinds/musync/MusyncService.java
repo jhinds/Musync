@@ -1,5 +1,6 @@
 package com.jhinds.musync;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -60,22 +61,22 @@ public class MusyncService {
         return result;
     }
 
-    public String userLogin(String username, String password){
+    public String userLogin(String username, String password) throws JSONException {
         HttpHeaders requestHeaders = new HttpHeaders();
         List<MediaType> mediaTypes = new ArrayList<MediaType>();
-        mediaTypes.add(MediaType.TEXT_PLAIN);
+        mediaTypes.add(MediaType.APPLICATION_JSON);
         requestHeaders.setAccept(mediaTypes);
+        Map<String, String> partnerDetails = partnerLogin();
         Map<String, String> body = new LinkedHashMap<String, String>();
         body.put("loginType", "user");
         body.put("username", username);
         body.put("password", password);
-        body.put("partnerAuthToken", partnerLogin().get("partnerAuthToken"));
+        body.put("partnerAuthToken", partnerDetails.get("partnerAuthToken"));
         HttpEntity<Map> httpEntity = new HttpEntity<Map>(body, requestHeaders);
         String response = new RestTemplate().exchange(
-                "https://internal-tuner.pandora.com/services/json/?method=auth.userLogin&partner_id=" + partnerLogin().get("partnerId"),
+                "https://internal-tuner.pandora.com/services/json/?method=auth.userLogin&partner_id=" + partnerDetails.get("partnerId"),
                 HttpMethod.POST, httpEntity, String.class).getBody();
         return new JSONObject(response).getJSONObject("result").get("userId").toString();
-
     }
 
 }

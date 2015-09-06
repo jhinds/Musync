@@ -16,4 +16,11 @@ public class MusyncServiceTest {
 
         musyncService.partnerLogin();
     }
+
+    @Test
+    public void testUserLogin() {
+        MusyncService musyncService = new MusyncService();
+
+        musyncService.userLogin("paul@22paul.com", "jh8050541");
+    }
 }
