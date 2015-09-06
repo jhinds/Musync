@@ -1,4 +1,4 @@
-package com.jhinds.musync;
+package com.jhinds.musync.service;
 
 import org.json.JSONException;
 import org.json.JSONObject;

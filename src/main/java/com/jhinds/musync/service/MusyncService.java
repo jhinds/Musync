@@ -1,5 +1,7 @@
-package com.jhinds.musync;
+package com.jhinds.musync.service;
 
+import com.jhinds.musync.Playlist;
+import com.jhinds.musync.Song;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;

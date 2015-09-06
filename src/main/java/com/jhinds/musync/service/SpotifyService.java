@@ -1,4 +1,4 @@
-package com.jhinds.musync;
+package com.jhinds.musync.service;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.methods.AddTrackToPlaylistRequest;

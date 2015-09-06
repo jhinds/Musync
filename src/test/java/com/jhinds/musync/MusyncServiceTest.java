@@ -1,5 +1,6 @@
 package com.jhinds.musync;
 
+import com.jhinds.musync.service.PandoraService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
