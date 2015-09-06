@@ -1,8 +1,6 @@
-package com.jhinds.hinds;
+package com.jhinds.musync;
 
 import org.mockito.InjectMocks;
-
-import com.jhinds.musync.Resource;
 
 import com.jhinds.musync.entities.Song;
 
