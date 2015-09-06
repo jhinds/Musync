@@ -38,7 +38,7 @@ public class MusyncService {
         return new Playlist();
     }
 
-    public String partnerLogin() {
+    public Map<String, String> partnerLogin() {
         HttpHeaders requestHeaders = new HttpHeaders();
         List<MediaType> mediaTypes = new ArrayList<MediaType>();
         mediaTypes.add(MediaType.TEXT_PLAIN);
@@ -52,10 +52,29 @@ public class MusyncService {
         String response = new RestTemplate().exchange(
                 "https://internal-tuner.pandora.com/services/json/?method=auth.partnerLogin",
                     HttpMethod.POST, httpEntity, String.class).getBody();
-        return new JSONObject(response).getJSONObject("result").get("partnerAuthToken").toString();
+        Map<String, String> result = new LinkedHashMap<String, String>();
+        String partnerAuthToken = new JSONObject(response).getJSONObject("result").get("partnerAuthToken").toString();
+        String partnerId = new JSONObject(response).getJSONObject("result").get("partnerId").toString();
+        result.put("partnerAuthToken", partnerAuthToken);
+        result.put("partnerId", partnerId);
+        return result;
     }
 
-    public void userLogin(){
+    public String userLogin(String username, String password){
+        HttpHeaders requestHeaders = new HttpHeaders();
+        List<MediaType> mediaTypes = new ArrayList<MediaType>();
+        mediaTypes.add(MediaType.TEXT_PLAIN);
+        requestHeaders.setAccept(mediaTypes);
+        Map<String, String> body = new LinkedHashMap<String, String>();
+        body.put("loginType", "user");
+        body.put("username", username);
+        body.put("password", password);
+        body.put("partnerAuthToken", partnerLogin().get("partnerAuthToken"));
+        HttpEntity<Map> httpEntity = new HttpEntity<Map>(body, requestHeaders);
+        String response = new RestTemplate().exchange(
+                "https://internal-tuner.pandora.com/services/json/?method=auth.userLogin&partner_id=" + partnerLogin().get("partnerId"),
+                HttpMethod.POST, httpEntity, String.class).getBody();
+        return new JSONObject(response).getJSONObject("result").get("userId").toString();
 
     }
 
