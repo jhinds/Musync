@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MusyncServiceTest {
     @Autowired
-    MusyncService musyncService;
+    PandoraService pandoraSerivce;
 
     @Test
     public void testPartnerLogin() {
-        MusyncService musyncService = new MusyncService();
+        PandoraService pandoraSerivce = new PandoraService();
 
-        musyncService.partnerLogin();
+        pandoraSerivce.partnerLogin();
     }
 
     @Test
     public void testUserLogin() {
-        MusyncService musyncService = new MusyncService();
+        PandoraService pandoraSerivce = new PandoraService();
 
-        musyncService.userLogin("paul@22paul.com", "jh8050541");
+        pandoraSerivce.userLogin("paul@22paul.com", "jh8050541");
     }
 }
