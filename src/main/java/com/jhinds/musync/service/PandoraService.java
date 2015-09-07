@@ -1,5 +1,6 @@
 package com.jhinds.musync.service;
 
+import com.jhinds.musync.Song;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
@@ -8,10 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by jonathanhinds on 9/6/15.
@@ -55,5 +53,10 @@ public class PandoraService {
                 "https://internal-tuner.pandora.com/services/json/?method=auth.userLogin&partner_id=" + partnerDetails.get("partnerId"),
                 HttpMethod.POST, httpEntity, String.class).getBody();
         return new JSONObject(response).getJSONObject("result").get("userId").toString();
+    }
+
+    public List<Song> getListofLikes() {
+
+        return new LinkedList<Song>();
     }
 }

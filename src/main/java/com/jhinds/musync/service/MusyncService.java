@@ -16,16 +16,6 @@ import java.util.regex.Pattern;
 
 public class MusyncService {
 
-    public List<Song> getPandoraFavorites() {
-        return new LinkedList<Song>();
-
-    }
-
-    public List<Playlist> getSpotifyPlaylists() {
-        return new LinkedList<Playlist>();
-
-    }
-
     public Playlist createPlaylist() {
         return new Playlist();
 
@@ -36,10 +26,6 @@ public class MusyncService {
 
     }
 
-    public Playlist getSpotifyPlayist() {
-
-        return new Playlist();
-    }
 
 
 
