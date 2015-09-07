@@ -1,22 +1,11 @@
 package com.jhinds.musync.service;
 
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.services.youtube.model.PlaylistSnippet;
-import com.google.api.services.youtube.model.PlaylistStatus;
-import com.google.api.services.youtube.model.Playlist;
+import com.google.api.services.youtube.model.*;
 import com.google.common.collect.Lists;
 import com.google.api.services.youtube.YouTube;
-import com.google.gdata.client.youtube.YouTubeService;
-import com.google.gdata.data.PlainTextConstruct;
-import com.google.gdata.data.youtube.PlaylistEntry;
-import com.google.gdata.data.youtube.PlaylistLinkEntry;
-import com.google.gdata.data.youtube.VideoEntry;
-import com.google.gdata.util.ServiceException;
-
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import com.jhinds.musync.utils.*;
@@ -57,6 +46,30 @@ public class YouTubeMusyncService {
         Playlist playlistInserted = playlistInsertion.execute();
 
         return  playlistInserted.getId();
+    }
+
+    private static String insertPlaylistItem(String playlistId, String videoId) throws IOException {
+
+        ResourceId resourceId = new ResourceId();
+        resourceId.setKind("youtube#video");
+        resourceId.setVideoId(videoId);
+
+        PlaylistItemSnippet playlistItemSnippet = new PlaylistItemSnippet();
+        playlistItemSnippet.setTitle("First video in the test playlist");
+        playlistItemSnippet.setPlaylistId(playlistId);
+        playlistItemSnippet.setResourceId(resourceId);
+
+
+        PlaylistItem playlistItem = new PlaylistItem();
+        playlistItem.setSnippet(playlistItemSnippet);
+
+
+        YouTube.PlaylistItems.Insert playlistItemsInsertCommand =
+                youTube.playlistItems().insert("snippet,contentDetails", playlistItem);
+        PlaylistItem returnedPlaylistItem = playlistItemsInsertCommand.execute();
+
+        return returnedPlaylistItem.getId();
+
     }
 
 
