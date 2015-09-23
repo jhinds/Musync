@@ -11,7 +11,15 @@ public class Song {
 	private String artist;
 	private String runningTime;
 	private String album;
-	
+
+	public Song(String id, String name, String artist, String runningTime, String album) {
+		this.id = id;
+		this.name = name;
+		this.artist = artist;
+		this.runningTime = runningTime;
+		this.album = album;
+	}
+
 	public String getName() {
 		return name;
 	}

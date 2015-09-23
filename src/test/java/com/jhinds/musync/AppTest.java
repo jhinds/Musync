@@ -13,9 +13,5 @@ public class AppTest {
 	@InjectMocks
 	private MusyncResource musyncResource;
 
-	@Test
-	public void testGetEntity() {
-		Song entity = new Song();
-		
-	}
+
 }

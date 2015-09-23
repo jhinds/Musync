@@ -10,7 +10,13 @@ public class Playlist {
 	private String id;
 	private String name;
 	private List<Song> songList;
-	
+
+	public Playlist(String id, String name, List<Song> songList) {
+		this.id = id;
+		this.name = name;
+		this.songList = songList;
+	}
+
 	public String getName() {
 		return name;
 	}
